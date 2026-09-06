@@ -1,0 +1,6 @@
+--- HW PREFETCH OFF (MSR 0x1a4 = 0xf) ---
+  SW ON  (PF_D=64): optimized       yes          26.640       80.61     17.34x
+  SW OFF (PF_D=0):  optimized       yes          29.201       73.54     15.80x
+--- HW PREFETCH ON (MSR 0x1a4 = 0x0) ---
+  SW ON  (PF_D=64): optimized       yes          26.149       82.13     17.15x
+  SW OFF (PF_D=0):  optimized       yes          24.746       86.78     18.17x

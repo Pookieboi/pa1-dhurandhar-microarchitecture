@@ -1,0 +1,16 @@
+# Task 2B perf metrics (i7-13700HX, P-core pinned, governor=performance)
+#
+# Instruction count: measured with an ISOLATED single-kernel driver (one call,
+# no harness), because 'perf stat ./bin/matmul <stage>' also runs the shared
+# naive reference + warmups + 3 reps, which dominates and masks the kernel.
+#   naive : 6,572,993,106 instr   (0.447 s wall)
+#   simd  :   395,027,579 instr   (0.070 s wall)
+#   ratio : 16.6x fewer instructions ; 6.4x faster wall-clock
+#           => compute dropped 16.6x but time only 6.4x => memory-bandwidth bound
+#   breakdown: ~8x vectorization (8 floats/FMA) x ~2x FMA fusion ~= 16x
+#
+# L1-dcache-load-misses (full harness, N=1024, valid as a naive-vs-simd contrast):
+#   naive : 21,975,825
+#   simd  : 198,325,791
+#   (simd streams B with no reuse -> far more L1 misses -> memory-bound; Stage 2
+#    tiling+prefetch is what fixes this.)

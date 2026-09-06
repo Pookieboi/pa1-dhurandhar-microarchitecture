@@ -1,0 +1,6 @@
+--- HW OFF (MSR 0x1a4=0xf) ---
+  SPF ON  (D=64): prefetch        yes         882.332        2.43      0.52x
+  SPF OFF (D=0) : prefetch        yes         442.984        4.85      1.00x
+--- HW ON (MSR 0x1a4=0x0) ---
+  SPF ON  (D=64): prefetch        yes         860.892        2.49      0.53x
+  SPF OFF (D=0) : prefetch        yes         436.778        4.92      1.01x

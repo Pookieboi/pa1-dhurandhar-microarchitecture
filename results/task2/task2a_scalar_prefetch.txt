@@ -1,0 +1,32 @@
+--- 1a. speedup vs size: WITHOUT (SPF_D=0) then WITH (SPF_D=64) ---
+    doc speedup = t_without / t_with
+--- size 128 ---
+prefetch        yes           0.666        6.29      1.03x
+prefetch        yes           1.113        3.77      0.73x
+--- size 256 ---
+prefetch        yes           6.061        5.54      1.11x
+prefetch        yes          12.179        2.76      0.50x
+--- size 512 ---
+prefetch        yes          54.479        4.93      1.01x
+prefetch        yes         102.213        2.63      0.60x
+--- size 1024 ---
+prefetch        yes         436.105        4.92      1.02x
+prefetch        yes         857.070        2.51      0.51x
+--- size 2048 ---
+prefetch        yes        3628.896        4.73      1.00x
+prefetch        yes        7113.071        2.42      0.51x
+
+--- 1b. distance sweep (N=1024) ---
+SPF_D=0: prefetch        yes         439.588        4.89      1.00x
+SPF_D=8: prefetch        yes         861.057        2.49      0.51x
+SPF_D=16: prefetch        yes         862.046        2.49      0.51x
+SPF_D=32: prefetch        yes         857.841        2.50      0.51x
+SPF_D=64: prefetch        yes         861.766        2.49      0.51x
+SPF_D=128: prefetch        yes         859.509        2.50      0.52x
+SPF_D=256: prefetch        yes         863.810        2.49      0.51x
+
+--- 1c. hint-level sweep (N=1024, SPF_D=64) ---
+SPF_L=_MM_HINT_T0: prefetch        yes         858.667        2.50      0.51x
+SPF_L=_MM_HINT_T1: prefetch        yes         862.015        2.49      0.51x
+SPF_L=_MM_HINT_T2: prefetch        yes         858.587        2.50      0.52x
+SPF_L=_MM_HINT_NTA: prefetch        yes         861.885        2.49      0.51x

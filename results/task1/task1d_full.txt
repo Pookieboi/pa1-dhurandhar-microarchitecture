@@ -1,0 +1,129 @@
+=== TASK 1D: COMBINED OPTIMIZATION  FULL DATA ===
+Sat 05 Sep 2026 05:54:56 PM IST
+
+### SECTION 0: CONDITIONS ###
+governor: performance
+chosen params: NACC=2 TH=16 TW=512, AVX2 256-bit
+flags: -O2 -fno-tree-vectorize -mavx2 -mfma
+
+### SECTION 1: GRADED RUN (score) ###
+CS683 PA-1 Task 1  2D convolution optimization harness
+[smoke] all stages match the reference on small inputs.
+
+=== Workload  H=2048 W=2048 K=3 seed=1234 (GRADED) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes          16.779        4.50      1.00x
+reorder         yes          14.045        5.38      1.19x
+unroll          yes           5.241       14.40      3.20x
+tile            yes          11.053        6.83      1.52x
+simd            yes          12.567        6.01      1.34x
+optimized       yes           2.082       36.26      8.06x
+--------------------------------------------------------------
+correctness : 40 / 40   (5 of 5 stages correct)
+optimized   : 8.06x  ->  60 / 60  speedup points
+TOTAL       : 100 / 100
+
+=== Workload  H=2048 W=2048 K=5 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes          48.033        4.37      1.00x
+reorder         yes          45.924        4.57      1.05x
+unroll          yes          13.530       15.50      3.55x
+tile            yes          27.169        7.72      1.77x
+simd            yes          23.222        9.03      2.07x
+optimized       yes           4.402       47.65     10.91x
+
+### SECTION 2: ALL STAGES vs MATRIX SIZE (Figure 1.1 data, K=3) ###
+columns: stage correct time_ms GFLOPs speedup
+--- size=1024x1024 K=3 ---
+naive (ref)     yes           3.904        4.83      1.00x
+reorder         yes           2.838        6.65      1.38x
+unroll          yes           1.241       15.21      3.14x
+tile            yes           2.404        7.85      1.62x
+simd            yes           1.594       11.84      2.45x
+optimized       yes           0.326       57.88     11.97x
+--- size=2048x2048 K=3 ---
+naive (ref)     yes          17.345        4.35      1.00x
+reorder         yes          14.410        5.24      1.20x
+unroll          yes           5.245       14.40      3.31x
+tile            yes          10.153        7.44      1.71x
+simd            yes           8.343        9.05      2.08x
+optimized       yes           1.614       46.77     10.75x
+--- size=4096x4096 K=3 ---
+naive (ref)     yes          68.694        4.40      1.00x
+reorder         yes          74.689        4.04      0.92x
+unroll          yes          23.736       12.72      2.89x
+tile            yes          41.945        7.20      1.64x
+simd            yes          51.671        5.84      1.33x
+optimized       yes           7.465       40.45      9.20x
+--- size=8192x8192 K=3 ---
+naive (ref)     yes         273.440        4.42      1.00x
+reorder         yes         291.597        4.14      0.94x
+unroll          yes          96.156       12.56      2.84x
+tile            yes         171.905        7.03      1.59x
+simd            yes         218.411        5.53      1.25x
+optimized       yes          30.647       39.42      8.92x
+
+### SECTION 3: ALL STAGES vs MATRIX SIZE (K=5) ###
+--- size=1024x1024 K=5 ---
+naive (ref)     yes          12.378        4.24      1.00x
+reorder         yes           7.679        6.83      1.61x
+unroll          yes           3.172       16.53      3.90x
+tile            yes           6.336        8.28      1.95x
+simd            yes           4.442       11.80      2.79x
+optimized       yes           1.013       51.76     12.22x
+--- size=2048x2048 K=5 ---
+naive (ref)     yes          42.312        4.96      1.00x
+reorder         yes          38.245        5.48      1.11x
+unroll          yes          12.813       16.37      3.30x
+tile            yes          26.865        7.81      1.58x
+simd            yes          23.741        8.83      1.78x
+optimized       yes           4.180       50.18     10.12x
+--- size=4096x4096 K=5 ---
+naive (ref)     yes         168.353        4.98      1.00x
+reorder         yes         188.664        4.45      0.89x
+unroll          yes          52.901       15.86      3.18x
+tile            yes         107.746        7.79      1.56x
+simd            yes         136.332        6.15      1.23x
+optimized       yes          17.508       47.91      9.62x
+--- size=8192x8192 K=5 ---
+naive (ref)     yes         676.016        4.96      1.00x
+reorder         yes         777.711        4.31      0.87x
+unroll          yes         214.247       15.66      3.16x
+tile            yes         433.983        7.73      1.56x
+simd            yes         585.581        5.73      1.15x
+optimized       yes          76.946       43.61      8.79x
+
+### SECTION 4: OPTIMIZED vs KERNEL SIZE (2048x2048) ###
+--- K=3 ---
+naive (ref)     yes          17.652        4.28      1.00x
+unroll          yes           5.442       13.87      3.24x
+tile            yes          10.326        7.31      1.71x
+simd            yes           8.524        8.86      2.07x
+optimized       yes           1.634       46.22     10.81x
+--- K=5 ---
+naive (ref)     yes          44.603        4.70      1.00x
+unroll          yes          13.243       15.84      3.37x
+tile            yes          27.364        7.66      1.63x
+simd            yes          22.403        9.36      1.99x
+optimized       yes           4.279       49.01     10.42x
+--- K=7 ---
+naive (ref)     yes          70.976        5.79      1.00x
+unroll          yes          25.301       16.25      2.81x
+tile            yes          52.227        7.87      1.36x
+simd            yes          45.250        9.08      1.57x
+optimized       yes           6.939       59.24     10.23x
+--- K=9 ---
+naive (ref)     yes         118.524        5.73      1.00x
+unroll          yes          44.323       15.33      2.67x
+tile            yes          85.518        7.95      1.39x
+simd            yes          73.945        9.19      1.60x
+optimized       yes          13.600       49.96      8.72x
+
+### SECTION 5: TILE-PARAM SWEEP (why NACC=2 TH=16) ###
+full 36-point grid at 4096x4096 in results/task1d_sweep.txt
+summary: NACC=2 optimal (1=FMA-latency-bound, 4/8=load-port-bound); TH=16 best across sizes
+
+=== END ===
+Sat 05 Sep 2026 05:56:04 PM IST

@@ -1,0 +1,41 @@
+===== M=N=K=128 =====
+naive (ref)     yes           0.866        4.85      1.00x
+simd            yes           0.068       61.37     12.67x
+prefetch        yes           0.060       69.71     14.39x
+optimized       yes           0.063       66.65     13.75x
+===== M=N=K=256 =====
+naive (ref)     yes           6.145        5.46      1.00x
+simd            yes           0.411       81.60     14.94x
+prefetch        yes           0.503       66.74     12.22x
+optimized       yes           0.335      100.06     18.33x
+===== M=N=K=512 =====
+naive (ref)     yes          54.072        4.96      1.00x
+simd            yes           4.158       64.55     13.00x
+prefetch        yes           4.293       62.53     12.60x
+optimized       yes           2.719       98.74     19.89x
+===== M=N=K=1024 =====
+naive (ref)     yes         446.141        4.81      1.00x
+simd            yes          62.049       34.61      7.19x
+prefetch        yes          35.490       60.51     12.57x
+optimized       yes          23.357       91.94     19.10x
+===== M=N=K=1536 =====
+naive (ref)     yes        1484.787        4.88      1.00x
+simd            yes         206.562       35.09      7.19x
+prefetch        yes         119.716       60.54     12.40x
+optimized       yes          99.946       72.52     14.86x
+===== M=N=K=2048 =====
+naive (ref)     yes        3704.026        4.64      1.00x
+simd            yes         533.531       32.20      6.94x
+prefetch        yes         308.894       55.62     11.99x
+optimized       yes         204.119       84.17     18.15x
+
+# ==================== READ BEFORE PLOTTING ====================
+# The N=1536 "optimized" row above (14.86x / 72.52 GFLOP/s) is NOISE.
+# A 3-run recheck gave 18.50-18.58x / ~88.4 GFLOP/s -> see task2c_recheck.txt.
+# USE 18.50x FOR N=1536 IN ALL PLOTS. Plotting 14.86x creates a false dip.
+# Same applies to two other first-pass outliers, both corrected in task2c_recheck.txt:
+#   task2c_prefetch_distance.txt  PF_D=32  (67.35 GF/s -> ~84.6)
+#   task2c_cachemiss.txt          N=2048 PF_D=64 (63.80 GF/s -> ~78.2)
+# GENERAL: prefer GFLOP/s or ms over the speedup column for within-kernel comparisons —
+# each harness run re-measures naive, and that baseline drifted 418-470 ms between runs.
+# ==============================================================

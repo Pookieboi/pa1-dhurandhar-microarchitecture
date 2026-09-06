@@ -1,0 +1,184 @@
+===== PF_D=0 =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         434.915        4.94      1.00x
+prefetch        yes          29.535       72.71     14.73x
+
+ Performance counter stats for '/tmp/pd prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+       347,797,556      cpu_core/L1-dcache-load-misses/                                       
+       418,062,468      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            23,483      cpu_core/LLC-load-misses/                                             
+
+       2.829730408 seconds time elapsed
+
+       2.825194000 seconds user
+       0.007000000 seconds sys
+
+
+===== PF_D=16 =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         434.715        4.94      1.00x
+prefetch        yes          33.709       63.71     12.90x
+
+ Performance counter stats for '/tmp/pd prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+        41,637,988      cpu_core/L1-dcache-load-misses/                                       
+       418,120,243      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            16,168      cpu_core/LLC-load-misses/                                             
+
+       2.805343138 seconds time elapsed
+
+       2.798072000 seconds user
+       0.006997000 seconds sys
+
+
+===== PF_D=64 =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         435.716        4.93      1.00x
+prefetch        yes          32.668       65.74     13.34x
+
+ Performance counter stats for '/tmp/pd prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+        48,304,473      cpu_core/L1-dcache-load-misses/                                       
+       418,095,583      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            15,565      cpu_core/LLC-load-misses/                                             
+
+       2.797224051 seconds time elapsed
+
+       2.786953000 seconds user
+       0.009999000 seconds sys
+
+
+===== PF_D=256 =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         439.222        4.89      1.00x
+prefetch        yes          34.284       62.64     12.81x
+
+ Performance counter stats for '/tmp/pd prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+        76,467,916      cpu_core/L1-dcache-load-misses/                                       
+       418,246,388      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            32,206      cpu_core/LLC-load-misses/                                             
+
+       2.807379699 seconds time elapsed
+
+       2.800046000 seconds user
+       0.007000000 seconds sys
+
+
+===== PF_L=_MM_HINT_T0 (PF_D=64) =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         434.584        4.94      1.00x
+prefetch        yes          33.152       64.78     13.11x
+
+ Performance counter stats for '/tmp/pl prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+        47,299,857      cpu_core/L1-dcache-load-misses/                                       
+       417,874,815      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            26,781      cpu_core/LLC-load-misses/                                             
+
+       2.790376603 seconds time elapsed
+
+       2.783116000 seconds user
+       0.007000000 seconds sys
+
+
+===== PF_L=_MM_HINT_T1 (PF_D=64) =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         434.859        4.94      1.00x
+prefetch        yes          36.451       58.92     11.93x
+
+ Performance counter stats for '/tmp/pl prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+       141,787,912      cpu_core/L1-dcache-load-misses/                                       
+       417,941,803      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            17,994      cpu_core/LLC-load-misses/                                             
+
+       2.804839907 seconds time elapsed
+
+       2.801385000 seconds user
+       0.007000000 seconds sys
+
+
+===== PF_L=_MM_HINT_T2 (PF_D=64) =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         434.625        4.94      1.00x
+prefetch        yes          36.542       58.77     11.89x
+
+ Performance counter stats for '/tmp/pl prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+       139,886,896      cpu_core/L1-dcache-load-misses/                                       
+       418,224,806      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            18,707      cpu_core/LLC-load-misses/                                             
+
+       2.807761386 seconds time elapsed
+
+       2.802498000 seconds user
+       0.007998000 seconds sys
+
+
+===== PF_L=_MM_HINT_NTA (PF_D=64) =====
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         434.998        4.94      1.00x
+prefetch        yes          34.964       61.42     12.44x
+
+ Performance counter stats for '/tmp/pl prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+        48,222,454      cpu_core/L1-dcache-load-misses/                                       
+       420,734,287      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            18,601      cpu_core/LLC-load-misses/                                             
+
+       2.817351143 seconds time elapsed
+
+       2.808876000 seconds user
+       0.010999000 seconds sys
+
+

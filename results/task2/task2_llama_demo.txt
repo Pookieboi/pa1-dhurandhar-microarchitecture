@@ -1,0 +1,29 @@
+  patched ggml-cpu.c
+  patched CMakeLists.txt
+injection complete
+>>> building STUDENT llama-cli
+>>> running STOCK inference
+>>> running STUDENT inference
+
+================ RESULT ================
+[ok] student matmul_optimized was actually used by ggml
+[ok] student output matches stock output token-for-token (kernel is correct)
+
+--- timings (llama.cpp native) ---
+llama_perf_sampler_print:    sampling time =       0.52 ms /    69 runs   (    0.01 ms per token, 132183.91 tokens per second)
+llama_perf_context_print: prompt eval time =       0.29 ms /     5 tokens (    0.06 ms per token, 17123.29 tokens per second)
+llama_perf_context_print:        eval time =       6.27 ms /    63 runs   (    0.10 ms per token, 10041.44 tokens per second)
+--- timings (student kernel)  ---
+llama_perf_sampler_print:    sampling time =       0.50 ms /    69 runs   (    0.01 ms per token, 137176.94 tokens per second)
+llama_perf_context_print: prompt eval time =       0.27 ms /     5 tokens (    0.05 ms per token, 18518.52 tokens per second)
+llama_perf_context_print:        eval time =       5.85 ms /    63 runs   (    0.09 ms per token, 10763.71 tokens per second)
+=======================================
+
+# NOTE: both correctness checks PASS reliably (kernel used + token-identical output).
+# THROUGHPUT IS NOISE at this scale (~6 ms total, 5-token prompt eval):
+#   run 1: native 16949 / 10277 tok/s   vs student 13055 /  8865  (student SLOWER)
+#   run 2: native 17123 / 10041 tok/s   vs student 18519 / 10764  (student FASTER)
+# Same binaries, opposite ordering -> do NOT quote either as a performance result.
+# Reason: stories260K is 1.2 MB (matrices L1-resident) and generation runs at M=1,
+# which takes the scalar tail, not the 4x4 fast path. The kernel's cache-blocking
+# advantage only appears at the microbenchmark scales (18-20x, ~96 GFLOP/s).

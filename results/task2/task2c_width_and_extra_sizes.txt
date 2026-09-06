@@ -1,0 +1,40 @@
+--- 3a. TRUE 128 vs 256-bit on the COMBINED kernel ---
+    (128-bit build swaps in ungraded/matmul_optimized128.cpp)
+--- size 512 : COMBINED 128-bit ---
+naive (ref)     yes          53.365        5.03      1.00x
+optimized       yes           5.147       52.16     10.37x
+--- size 512 : COMBINED 256-bit ---
+naive (ref)     yes          53.010        5.06      1.00x
+optimized       yes           2.562      104.79     20.69x
+--- size 1024 : COMBINED 128-bit ---
+naive (ref)     yes         444.891        4.83      1.00x
+optimized       yes          47.938       44.80      9.28x
+--- size 1024 : COMBINED 256-bit ---
+naive (ref)     yes         436.564        4.92      1.00x
+optimized       yes          21.835       98.35     19.99x
+--- size 2048 : COMBINED 128-bit ---
+naive (ref)     yes        3716.550        4.62      1.00x
+optimized       yes         350.650       48.99     10.60x
+--- size 2048 : COMBINED 256-bit ---
+naive (ref)     yes        3629.996        4.73      1.00x
+optimized       yes         189.950       90.44     19.11x
+--- correctness of the 128-bit combined kernel on ragged shapes ---
+[255 257 129] optimized       yes           0.393       43.04      7.67x
+[1 129 130] optimized       yes           0.001       25.31      4.00x
+[3 3 3] optimized       yes           0.000        1.08      0.86x
+
+--- 3b. distance sweep on COMBINED at N=512 and N=2048 ---
+N=512 PF_D=0: optimized       yes           2.607      102.97     20.07x
+N=512 PF_D=16: optimized       yes           2.659      100.97     19.61x
+N=512 PF_D=64: optimized       yes           2.660      100.93     19.65x
+N=512 PF_D=256: optimized       yes           2.787       96.33     19.32x
+N=2048 PF_D=0: optimized       yes         191.635       89.65     18.88x
+N=2048 PF_D=16: optimized       yes         201.849       85.11     17.97x
+N=2048 PF_D=64: optimized       yes         201.893       85.09     17.91x
+N=2048 PF_D=256: optimized       yes         200.500       85.69     18.03x
+
+--- 3c. level sweep on COMBINED at N=2048 (PF_D=64) ---
+N=2048 PF_L=_MM_HINT_T0: optimized       yes         201.123       85.42     18.05x
+N=2048 PF_L=_MM_HINT_T1: optimized       yes         207.165       82.93     17.48x
+N=2048 PF_L=_MM_HINT_T2: optimized       yes         207.451       82.81     17.51x
+N=2048 PF_L=_MM_HINT_NTA: optimized       yes         201.148       85.41     17.97x

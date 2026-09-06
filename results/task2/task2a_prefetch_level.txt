@@ -1,0 +1,8 @@
+PF_L=_MM_HINT_T0:
+prefetch        yes          37.802       56.81     11.67x
+PF_L=_MM_HINT_T1:
+prefetch        yes          39.625       54.20     10.97x
+PF_L=_MM_HINT_T2:
+prefetch        yes          39.832       53.91     10.91x
+PF_L=_MM_HINT_NTA:
+prefetch        yes          39.797       53.96     11.01x

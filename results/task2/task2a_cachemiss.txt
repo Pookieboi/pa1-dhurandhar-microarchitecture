@@ -1,0 +1,46 @@
+=== SW prefetch ON (PF_D=64) ===
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         440.116        4.88      1.00x
+prefetch        yes          36.060       59.55     12.21x
+
+ Performance counter stats for '/tmp/mm_on prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+        47,401,031      cpu_core/L1-dcache-load-misses/                                       
+       418,455,062      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            30,989      cpu_core/LLC-load-misses/                                             
+
+       2.838639081 seconds time elapsed
+
+       2.835989000 seconds user
+       0.005999000 seconds sys
+
+
+=== SW prefetch OFF (PF_D=0) ===
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         434.993        4.94      1.00x
+prefetch        yes          35.628       60.27     12.21x
+
+ Performance counter stats for '/tmp/mm_off prefetch 1024 1024 1024 1234':
+
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+       330,546,631      cpu_core/L1-dcache-load-misses/                                       
+       418,089,655      cpu_core/l2_rqsts.miss/                                               
+     <not counted>      cpu_atom/LLC-load-misses/                                               (0.00%)
+            35,395      cpu_core/LLC-load-misses/                                             
+
+       2.821935905 seconds time elapsed
+
+       2.818950000 seconds user
+       0.003999000 seconds sys
+
+

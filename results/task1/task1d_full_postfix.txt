@@ -1,0 +1,89 @@
+### TASK 1D FULL DATA - REGENERATED AFTER conv_optimized FIX ###
+Sun 06 Sep 2026 05:01:54 PM IST
+governor: 
+chosen params: NACC=2 TH=16 TW=512, AVX2 256-bit
+flags: -O2 -fno-tree-vectorize -mavx2 -mfma
+NOTE: supersedes task1d_full.txt Sections 1-4. Section 5 (tile-param sweep)
+      is unchanged and still lives in the ORIGINAL task1d_full.txt.
+
+### SECTION 1: GRADED RUN (score) ###
+CS683 PA-1 Task 1  2D convolution optimization harness
+[smoke] all stages match the reference on small inputs.
+
+=== Workload  H=2048 W=2048 K=3 seed=1234 (GRADED) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes          19.253        3.92      1.00x
+reorder         yes          19.630        3.85      0.98x
+unroll          yes           7.402       10.20      2.60x
+tile            yes          12.675        5.96      1.52x
+simd            yes          11.184        6.75      1.72x
+optimized       yes           2.082       36.25      9.25x
+--------------------------------------------------------------
+correctness : 40 / 40   (5 of 5 stages correct)
+optimized   : 9.25x  ->  60 / 60  speedup points
+TOTAL       : 100 / 100
+
+=== Workload  H=2048 W=2048 K=5 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes          57.618        3.64      1.00x
+reorder         yes          44.781        4.68      1.29x
+unroll          yes          13.218       15.87      4.36x
+tile            yes          35.617        5.89      1.62x
+simd            yes          38.289        5.48      1.50x
+optimized       yes           3.492       60.05     16.50x
+
+
+### !!! SECTIONS 2-4 BELOW ARE VOID !!! ###
+# They were run as './bin/conv 512 512 3 1234' with the STAGE ARGUMENT MISSING,
+# so every command printed the usage text instead of results.
+# CORRECT DATA FOR SECTIONS 2-4 IS IN: results/task1d_sections234_fixed.txt
+# Only SECTION 1 (the graded run) above is valid in this file.
+### SECTION 2: ALL STAGES vs SIZE (Figure 1.1 data, K=3) ###
+--- H=W=256 K=3 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- H=W=512 K=3 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- H=W=1024 K=3 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- H=W=2048 K=3 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- H=W=4096 K=3 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+
+### SECTION 3: ALL STAGES vs SIZE (K=5) ###
+--- H=W=256 K=5 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- H=W=512 K=5 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- H=W=1024 K=5 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- H=W=2048 K=5 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+
+### SECTION 4: ALL STAGES vs KERNEL SIZE (2048x2048) ###
+--- K=3 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- K=5 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- K=7 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+--- K=9 ---
+stage: naive | reorder | unroll | tile | simd | optimized | all
+  ./bin/conv reorder            ./bin/conv reorder 512 512 3            ./bin/conv all 1024 1024 5
+
+### END ###
+Sun 06 Sep 2026 05:01:57 PM IST

@@ -1,0 +1,21 @@
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=256 N=256 K=256 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes           5.965        5.63      1.00x
+simd            yes           0.439       76.51     13.60x
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=37 N=53 K=71 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes           0.051        5.50      1.00x
+simd            yes           0.006       43.68      7.95x
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1 N=129 K=130 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes           0.006        5.81      1.00x
+simd            yes           0.001       49.18      8.47x

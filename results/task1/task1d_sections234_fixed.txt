@@ -1,0 +1,102 @@
+### TASK 1D SECTIONS 2-4 - CORRECTED RERUN (stage arg was missing) ###
+Sun 06 Sep 2026 05:21:36 PM IST
+
+### SECTION 2: ALL STAGES vs SIZE (Figure 1.1 data, K=3) ###
+--- H=W=256 K=3 ---
+naive (ref)     yes           0.274        4.31      1.00x
+reorder         yes           0.229        5.15      1.19x
+unroll          yes           0.090       13.17      3.06x
+tile            yes           0.158        7.46      1.73x
+simd            yes           0.042       28.16      6.54x
+optimized       yes           0.023       52.02     12.07x
+--- H=W=512 K=3 ---
+naive (ref)     yes           1.161        4.06      1.00x
+reorder         yes           0.769        6.14      1.51x
+unroll          yes           0.354       13.32      3.28x
+tile            yes           0.556        8.49      2.09x
+simd            yes           0.365       12.92      3.18x
+optimized       yes           0.069       68.19     16.78x
+--- H=W=1024 K=3 ---
+naive (ref)     yes           3.936        4.80      1.00x
+reorder         yes           2.513        7.51      1.57x
+unroll          yes           1.152       16.38      3.42x
+tile            yes           2.196        8.60      1.79x
+simd            yes           1.632       11.57      2.41x
+optimized       yes           0.302       62.43     13.02x
+--- H=W=2048 K=3 ---
+naive (ref)     yes          16.693        4.52      1.00x
+reorder         yes          14.653        5.15      1.14x
+unroll          yes           5.056       14.93      3.30x
+tile            yes           9.700        7.78      1.72x
+simd            yes           8.140        9.27      2.05x
+optimized       yes           1.639       46.06     10.18x
+--- H=W=4096 K=3 ---
+naive (ref)     yes          58.346        5.18      1.00x
+reorder         yes          74.497        4.05      0.78x
+unroll          yes          23.958       12.61      2.44x
+tile            yes          41.665        7.25      1.40x
+simd            yes          52.427        5.76      1.11x
+optimized       yes           7.091       42.59      8.23x
+
+### SECTION 3: ALL STAGES vs SIZE (K=5) ###
+--- H=W=256 K=5 ---
+naive (ref)     yes           0.769        4.26      1.00x
+reorder         yes           0.417        7.85      1.84x
+unroll          yes           0.186       17.60      4.13x
+tile            yes           0.404        8.11      1.90x
+simd            yes           0.125       26.19      6.14x
+optimized       yes           0.046       70.54     16.55x
+--- H=W=512 K=5 ---
+naive (ref)     yes           3.203        4.09      1.00x
+reorder         yes           1.731        7.57      1.85x
+unroll          yes           0.733       17.88      4.37x
+tile            yes           1.488        8.81      2.15x
+simd            yes           0.986       13.29      3.25x
+optimized       yes           0.181       72.45     17.70x
+--- H=W=1024 K=5 ---
+naive (ref)     yes          10.344        5.07      1.00x
+reorder         yes           7.536        6.96      1.37x
+unroll          yes           3.122       16.80      3.31x
+tile            yes           6.341        8.27      1.63x
+simd            yes           4.330       12.11      2.39x
+optimized       yes           0.722       72.66     14.34x
+--- H=W=2048 K=5 ---
+naive (ref)     yes          50.290        4.17      1.00x
+reorder         yes          37.817        5.55      1.33x
+unroll          yes          11.954       17.54      4.21x
+tile            yes          25.167        8.33      2.00x
+simd            yes          21.935        9.56      2.29x
+optimized       yes           3.004       69.80     16.74x
+
+### SECTION 4: ALL STAGES vs KERNEL SIZE (2048x2048) ###
+--- K=3 ---
+naive (ref)     yes          15.871        4.76      1.00x
+reorder         yes          13.513        5.59      1.17x
+unroll          yes           5.198       14.52      3.05x
+tile            yes           9.792        7.71      1.62x
+simd            yes           7.874        9.59      2.02x
+optimized       yes           1.477       51.12     10.75x
+--- K=5 ---
+naive (ref)     yes          46.232        4.54      1.00x
+reorder         yes          37.746        5.56      1.22x
+unroll          yes          12.430       16.87      3.72x
+tile            yes          25.310        8.29      1.83x
+simd            yes          22.531        9.31      2.05x
+optimized       yes           2.888       72.62     16.01x
+--- K=7 ---
+naive (ref)     yes          63.995        6.42      1.00x
+reorder         yes          73.656        5.58      0.87x
+unroll          yes          23.130       17.77      2.77x
+tile            yes          48.372        8.50      1.32x
+simd            yes          42.618        9.64      1.50x
+optimized       yes           6.114       67.23     10.47x
+--- K=9 ---
+naive (ref)     yes         132.646        5.12      1.00x
+reorder         yes         122.342        5.55      1.08x
+unroll          yes          37.558       18.09      3.53x
+tile            yes          78.243        8.68      1.70x
+simd            yes          69.112        9.83      1.92x
+optimized       yes          11.721       57.97     11.32x
+
+### END ###
+Sun 06 Sep 2026 05:21:51 PM IST

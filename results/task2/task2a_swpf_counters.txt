@@ -1,0 +1,466 @@
+=== SCALAR kernel, every distance ===
+----- scalar SPF_D=0 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         444.208        4.83      1.00x
+prefetch        yes         442.630        4.85      1.00x
+
+ Performance counter stats for '/tmp/sp_d prefetch 1024 1024 1024 1234':
+
+            19,915      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       4.951159100 seconds time elapsed
+
+       4.942528000 seconds user
+       0.010996000 seconds sys
+
+
+----- scalar SPF_D=8 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         436.946        4.91      1.00x
+prefetch        yes         858.859        2.50      0.51x
+
+ Performance counter stats for '/tmp/sp_d prefetch 1024 1024 1024 1234':
+
+     5,369,387,439      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.951498724 seconds time elapsed
+
+       6.947504000 seconds user
+       0.006999000 seconds sys
+
+
+----- scalar SPF_D=16 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         445.346        4.82      1.00x
+prefetch        yes         863.588        2.49      0.52x
+
+ Performance counter stats for '/tmp/sp_d prefetch 1024 1024 1024 1234':
+
+     5,369,411,549      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       7.010834869 seconds time elapsed
+
+       7.009039000 seconds user
+       0.003000000 seconds sys
+
+
+----- scalar SPF_D=32 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         438.465        4.90      1.00x
+prefetch        yes         859.349        2.50      0.51x
+
+ Performance counter stats for '/tmp/sp_d prefetch 1024 1024 1024 1234':
+
+     5,369,385,327      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.941694187 seconds time elapsed
+
+       6.935719000 seconds user
+       0.007999000 seconds sys
+
+
+----- scalar SPF_D=64 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         442.766        4.85      1.00x
+prefetch        yes         862.572        2.49      0.51x
+
+ Performance counter stats for '/tmp/sp_d prefetch 1024 1024 1024 1234':
+
+     5,369,441,152      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.989684977 seconds time elapsed
+
+       6.984662000 seconds user
+       0.007999000 seconds sys
+
+
+----- scalar SPF_D=128 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         446.389        4.81      1.00x
+prefetch        yes         860.543        2.50      0.52x
+
+ Performance counter stats for '/tmp/sp_d prefetch 1024 1024 1024 1234':
+
+     5,369,397,426      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.997260934 seconds time elapsed
+
+       6.993248000 seconds user
+       0.006999000 seconds sys
+
+
+----- scalar SPF_D=256 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         437.190        4.91      1.00x
+prefetch        yes         867.142        2.48      0.50x
+
+ Performance counter stats for '/tmp/sp_d prefetch 1024 1024 1024 1234':
+
+     5,369,427,555      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.972101563 seconds time elapsed
+
+       6.972053000 seconds user
+       0.002999000 seconds sys
+
+
+=== SCALAR kernel, every hint level (SPF_D=64) ===
+----- scalar SPF_L=_MM_HINT_T0 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         448.109        4.79      1.00x
+prefetch        yes         859.079        2.50      0.52x
+
+ Performance counter stats for '/tmp/sp_l prefetch 1024 1024 1024 1234':
+
+     5,369,399,287      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       7.006332817 seconds time elapsed
+
+       7.002419000 seconds user
+       0.006998000 seconds sys
+
+
+----- scalar SPF_L=_MM_HINT_T1 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         436.683        4.92      1.00x
+prefetch        yes         862.152        2.49      0.51x
+
+ Performance counter stats for '/tmp/sp_l prefetch 1024 1024 1024 1234':
+
+            27,932      cpu_core/sw_prefetch_access.t0/                                       
+     5,369,345,677      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.955210452 seconds time elapsed
+
+       6.953259000 seconds user
+       0.004999000 seconds sys
+
+
+----- scalar SPF_L=_MM_HINT_T2 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         440.027        4.88      1.00x
+prefetch        yes         857.834        2.50      0.51x
+
+ Performance counter stats for '/tmp/sp_l prefetch 1024 1024 1024 1234':
+
+            27,961      cpu_core/sw_prefetch_access.t0/                                       
+     5,369,379,584      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.955501139 seconds time elapsed
+
+       6.946843000 seconds user
+       0.008998000 seconds sys
+
+
+----- scalar SPF_L=_MM_HINT_NTA -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         436.648        4.92      1.00x
+prefetch        yes         860.836        2.49      0.51x
+
+ Performance counter stats for '/tmp/sp_l prefetch 1024 1024 1024 1234':
+
+            27,914      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+     5,369,380,536      cpu_core/sw_prefetch_access.nta/                                      
+
+       6.950971078 seconds time elapsed
+
+       6.949932000 seconds user
+       0.004999000 seconds sys
+
+
+=== VECTOR prefetch kernel (src/matmul_prefetch.cpp), every distance ===
+----- vector PF_D=0 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         437.764        4.91      1.00x
+prefetch        yes          29.897       71.83     14.64x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+            11,322      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.787509700 seconds time elapsed
+
+       2.782923000 seconds user
+       0.006999000 seconds sys
+
+
+----- vector PF_D=8 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         452.298        4.75      1.00x
+prefetch        yes          34.998       61.36     12.92x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+       671,514,518      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.934999357 seconds time elapsed
+
+       2.933408000 seconds user
+       0.004000000 seconds sys
+
+
+----- vector PF_D=16 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         437.061        4.91      1.00x
+prefetch        yes          33.793       63.55     12.93x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+       671,444,146      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.804403199 seconds time elapsed
+
+       2.802894000 seconds user
+       0.004999000 seconds sys
+
+
+----- vector PF_D=32 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         436.787        4.92      1.00x
+prefetch        yes          33.833       63.47     12.91x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+       671,406,927      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.804566959 seconds time elapsed
+
+       2.796103000 seconds user
+       0.011000000 seconds sys
+
+
+----- vector PF_D=64 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         452.312        4.75      1.00x
+prefetch        yes          33.300       64.49     13.58x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+       671,124,803      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.854884411 seconds time elapsed
+
+       2.849114000 seconds user
+       0.006000000 seconds sys
+
+
+----- vector PF_D=128 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         436.386        4.92      1.00x
+prefetch        yes          34.072       63.03     12.81x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+       671,128,252      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.808181657 seconds time elapsed
+
+       2.810762000 seconds user
+       0.000999000 seconds sys
+
+
+----- vector PF_D=256 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         437.468        4.91      1.00x
+prefetch        yes          34.236       62.73     12.78x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+       671,127,972      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.815542786 seconds time elapsed
+
+       2.811094000 seconds user
+       0.007997000 seconds sys
+
+
+=== VECTOR prefetch kernel, every hint level (PF_D=64) ===
+----- vector PF_L=_MM_HINT_T0 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         440.644        4.87      1.00x
+prefetch        yes          33.540       64.03     13.14x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+       671,131,532      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.820023173 seconds time elapsed
+
+       2.816479000 seconds user
+       0.006001000 seconds sys
+
+
+----- vector PF_L=_MM_HINT_T1 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         441.913        4.86      1.00x
+prefetch        yes          37.548       57.19     11.77x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+            11,671      cpu_core/sw_prefetch_access.t0/                                       
+       671,126,336      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.849866366 seconds time elapsed
+
+       2.849289000 seconds user
+       0.004000000 seconds sys
+
+
+----- vector PF_L=_MM_HINT_T2 -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         436.892        4.92      1.00x
+prefetch        yes          37.213       57.71     11.74x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+            11,567      cpu_core/sw_prefetch_access.t0/                                       
+       671,126,713      cpu_core/sw_prefetch_access.t1_t2/                                      
+                 0      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.820953051 seconds time elapsed
+
+       2.817440000 seconds user
+       0.007001000 seconds sys
+
+
+----- vector PF_L=_MM_HINT_NTA -----
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         436.056        4.92      1.00x
+prefetch        yes          45.485       47.21      9.59x
+
+ Performance counter stats for '/tmp/vp prefetch 1024 1024 1024 1234':
+
+            11,697      cpu_core/sw_prefetch_access.t0/                                       
+                 0      cpu_core/sw_prefetch_access.t1_t2/                                      
+       671,133,907      cpu_core/sw_prefetch_access.nta/                                      
+
+       2.845941223 seconds time elapsed
+
+       2.842469000 seconds user
+       0.006000000 seconds sys
+
+

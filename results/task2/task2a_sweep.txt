@@ -1,0 +1,42 @@
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=128 N=128 K=128 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes           0.788        5.32      1.00x
+prefetch        yes           0.060       70.05     13.16x
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=256 N=256 K=256 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes           5.961        5.63      1.00x
+prefetch        yes           0.509       65.91     11.71x
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=512 N=512 K=512 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes          57.379        4.68      1.00x
+prefetch        yes           4.071       65.95     14.10x
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1024 N=1024 K=1024 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes         442.724        4.85      1.00x
+prefetch        yes          35.313       60.81     12.54x
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=1536 N=1536 K=1536 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes        1485.617        4.88      1.00x
+prefetch        yes         118.358       61.24     12.55x
+CS683 PA-1 Task 2  matrix multiplication optimization harness
+
+=== Workload  M=2048 N=2048 K=2048 seed=1234 (not graded) ===
+stage           correct    time(ms)     GFLOP/s    speedup
+--------------------------------------------------------------
+naive (ref)     yes        3586.220        4.79      1.00x
+prefetch        yes         297.416       57.76     12.06x

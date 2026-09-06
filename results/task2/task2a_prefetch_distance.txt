@@ -1,0 +1,12 @@
+PF_D=0:
+prefetch        yes          31.828       67.47     13.80x
+PF_D=16:
+prefetch        yes          35.767       60.04     12.14x
+PF_D=32:
+prefetch        yes          35.748       60.07     12.21x
+PF_D=64:
+prefetch        yes          35.581       60.36     12.34x
+PF_D=128:
+prefetch        yes          36.201       59.32     12.00x
+PF_D=256:
+prefetch        yes          36.494       58.84     11.90x

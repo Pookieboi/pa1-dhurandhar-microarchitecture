@@ -1,0 +1,4 @@
+PF_L=_MM_HINT_T0 (PF_D=64): optimized       yes          26.626       80.65     16.87x
+PF_L=_MM_HINT_T1 (PF_D=64): optimized       yes          26.207       81.94     16.91x
+PF_L=_MM_HINT_T2 (PF_D=64): optimized       yes          27.490       78.12     17.62x
+PF_L=_MM_HINT_NTA (PF_D=64): optimized       yes          25.921       82.85     17.13x

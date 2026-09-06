@@ -1,0 +1,18 @@
+--- size 128 : PF_D=0 (without) then PF_D=64 (with) ---
+prefetch        yes           0.046       91.42     14.49x
+prefetch        yes           0.067       62.38     10.47x
+--- size 256 : PF_D=0 (without) then PF_D=64 (with) ---
+prefetch        yes           0.420       79.96     14.74x
+prefetch        yes           0.509       65.95     11.78x
+--- size 512 : PF_D=0 (without) then PF_D=64 (with) ---
+prefetch        yes           3.456       77.67     15.16x
+prefetch        yes           3.910       68.66     13.32x
+--- size 1024 : PF_D=0 (without) then PF_D=64 (with) ---
+prefetch        yes          28.699       74.83     15.23x
+prefetch        yes          34.644       61.99     12.54x
+--- size 1536 : PF_D=0 (without) then PF_D=64 (with) ---
+prefetch        yes         103.396       70.10     14.93x
+prefetch        yes         111.772       64.84     13.31x
+--- size 2048 : PF_D=0 (without) then PF_D=64 (with) ---
+prefetch        yes         246.242       69.77     14.62x
+prefetch        yes         280.663       61.21     12.78x

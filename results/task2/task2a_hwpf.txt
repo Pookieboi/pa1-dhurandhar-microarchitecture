@@ -1,0 +1,10 @@
+############ HW PREFETCH OFF (MSR 0x1a4 = 0xf) ############
+--- SW prefetch ON  (PF_D=64) ---
+prefetch        yes          35.947       59.74     12.57x
+--- SW prefetch OFF (PF_D=0)  ---
+prefetch        yes          31.510       68.15     13.99x
+############ HW PREFETCH ON  (MSR 0x1a4 = 0x0) ############
+--- SW prefetch ON  (PF_D=64) ---
+prefetch        yes          35.089       61.20     12.39x
+--- SW prefetch OFF (PF_D=0)  ---
+prefetch        yes          32.576       65.92     13.37x

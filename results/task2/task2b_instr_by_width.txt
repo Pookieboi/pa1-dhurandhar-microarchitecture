@@ -1,0 +1,117 @@
+===== N=512 naive =====
+
+ Performance counter stats for '/tmp/drv256 naive 512':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+       838,022,006      cpu_core/instructions/                                                
+
+       0.056151348 seconds time elapsed
+
+       0.057920000 seconds user
+       0.001997000 seconds sys
+
+
+===== N=512 simd 128-bit =====
+
+ Performance counter stats for '/tmp/drv128 simd 512':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+       166,896,117      cpu_core/instructions/                                                
+
+       0.011468885 seconds time elapsed
+
+       0.008618000 seconds user
+       0.002872000 seconds sys
+
+
+===== N=512 simd 256-bit =====
+
+ Performance counter stats for '/tmp/drv256 simd 512':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+        65,653,310      cpu_core/instructions/                                                
+
+       0.008158235 seconds time elapsed
+
+       0.007169000 seconds user
+       0.001024000 seconds sys
+
+
+===== N=1024 naive =====
+
+ Performance counter stats for '/tmp/drv256 naive 1024':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     6,572,916,527      cpu_core/instructions/                                                
+
+       0.456777357 seconds time elapsed
+
+       0.451736000 seconds user
+       0.004997000 seconds sys
+
+
+===== N=1024 simd 128-bit =====
+
+ Performance counter stats for '/tmp/drv128 simd 1024':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     1,201,946,863      cpu_core/instructions/                                                
+
+       0.086488226 seconds time elapsed
+
+       0.083470000 seconds user
+       0.002981000 seconds sys
+
+
+===== N=1024 simd 256-bit =====
+
+ Performance counter stats for '/tmp/drv256 simd 1024':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+       395,047,199      cpu_core/instructions/                                                
+
+       0.069806001 seconds time elapsed
+
+       0.065814000 seconds user
+       0.003988000 seconds sys
+
+
+===== N=2048 naive =====
+
+ Performance counter stats for '/tmp/drv256 naive 2048':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+    52,076,483,939      cpu_core/instructions/                                                
+
+       3.707786161 seconds time elapsed
+
+       3.686052000 seconds user
+       0.020994000 seconds sys
+
+
+===== N=2048 simd 128-bit =====
+
+ Performance counter stats for '/tmp/drv128 simd 2048':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     9,104,092,474      cpu_core/instructions/                                                
+
+       0.656091787 seconds time elapsed
+
+       0.635000000 seconds user
+       0.020967000 seconds sys
+
+
+===== N=2048 simd 256-bit =====
+
+ Performance counter stats for '/tmp/drv256 simd 2048':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     2,653,294,523      cpu_core/instructions/                                                
+
+       0.538553302 seconds time elapsed
+
+       0.526515000 seconds user
+       0.011988000 seconds sys
+
+

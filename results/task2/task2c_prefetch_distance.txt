@@ -1,0 +1,6 @@
+PF_D=0: optimized       yes          25.690       83.59     17.78x
+PF_D=16: optimized       yes          25.310       84.85     17.19x
+PF_D=32: optimized       yes          31.886       67.35     13.71x
+PF_D=64: optimized       yes          25.205       85.20     17.42x
+PF_D=128: optimized       yes          25.599       83.89     17.17x
+PF_D=256: optimized       yes          25.499       84.22     17.15x

@@ -1,0 +1,78 @@
+===== N=1024 naive =====
+
+ Performance counter stats for '/tmp/drv2 naive 1024':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     6,572,879,294      cpu_core/instructions/                                                
+
+       0.466139066 seconds time elapsed
+
+       0.460071000 seconds user
+       0.006000000 seconds sys
+
+
+===== N=1024 simd (SIMD only) =====
+
+ Performance counter stats for '/tmp/drv2 simd 1024':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+       395,350,711      cpu_core/instructions/                                                
+
+       0.075692428 seconds time elapsed
+
+       0.072357000 seconds user
+       0.007034000 seconds sys
+
+
+===== N=1024 optimized (SIMD+tiling+prefetch) =====
+
+ Performance counter stats for '/tmp/drv2 optimized 1024':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+       352,332,734      cpu_core/instructions/                                                
+
+       0.037605930 seconds time elapsed
+
+       0.035572000 seconds user
+       0.002032000 seconds sys
+
+
+===== N=2048 naive =====
+
+ Performance counter stats for '/tmp/drv2 naive 2048':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+    52,084,965,519      cpu_core/instructions/                                                
+
+       3.935446012 seconds time elapsed
+
+       3.917277000 seconds user
+       0.016996000 seconds sys
+
+
+===== N=2048 simd (SIMD only) =====
+
+ Performance counter stats for '/tmp/drv2 simd 2048':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     2,656,656,781      cpu_core/instructions/                                                
+
+       0.638681492 seconds time elapsed
+
+       0.610064000 seconds user
+       0.028002000 seconds sys
+
+
+===== N=2048 optimized (SIMD+tiling+prefetch) =====
+
+ Performance counter stats for '/tmp/drv2 optimized 2048':
+
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+     2,313,442,978      cpu_core/instructions/                                                
+
+       0.244659214 seconds time elapsed
+
+       0.231693000 seconds user
+       0.012982000 seconds sys
+
+

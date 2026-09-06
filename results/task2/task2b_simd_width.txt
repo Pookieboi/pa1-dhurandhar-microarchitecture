@@ -1,0 +1,37 @@
+--- size 128 : 128-bit SSE ---
+naive (ref)     yes           0.665        6.31      1.00x
+simd            yes           0.093       44.96      7.13x
+--- size 128 : 256-bit AVX2 ---
+naive (ref)     yes           0.808        5.19      1.00x
+simd            yes           0.069       60.62     11.68x
+--- size 256 : 128-bit SSE ---
+naive (ref)     yes           6.515        5.15      1.00x
+simd            yes           0.739       45.38      8.81x
+--- size 256 : 256-bit AVX2 ---
+naive (ref)     yes           6.190        5.42      1.00x
+simd            yes           0.410       81.78     15.09x
+--- size 512 : 128-bit SSE ---
+naive (ref)     yes          52.090        5.15      1.00x
+simd            yes           6.900       38.90      7.55x
+--- size 512 : 256-bit AVX2 ---
+naive (ref)     yes          52.452        5.12      1.00x
+simd            yes           4.531       59.25     11.58x
+--- size 1024 : 128-bit SSE ---
+naive (ref)     yes         458.773        4.68      1.00x
+simd            yes          79.310       27.08      5.78x
+--- size 1024 : 256-bit AVX2 ---
+naive (ref)     yes         435.920        4.93      1.00x
+simd            yes          58.369       36.79      7.47x
+--- size 1536 : 128-bit SSE ---
+naive (ref)     yes        1485.775        4.88      1.00x
+simd            yes         232.528       31.17      6.39x
+--- size 1536 : 256-bit AVX2 ---
+naive (ref)     yes        1485.708        4.88      1.00x
+simd            yes         197.001       36.79      7.54x
+--- size 2048 : 128-bit SSE ---
+naive (ref)     yes        3587.731        4.79      1.00x
+simd            yes         575.475       29.85      6.23x
+--- size 2048 : 256-bit AVX2 ---
+naive (ref)     yes        3587.955        4.79      1.00x
+simd            yes         499.959       34.36      7.18x
+NOTE: AVX-512 unavailable on this CPU (no avx512f flag) -> 512-bit N/A.

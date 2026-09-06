@@ -1,0 +1,169 @@
+=== TASK 1C: SIMD  FULL DATA COLLECTION ===
+Sat 05 Sep 2026 04:45:16 PM IST
+
+### SECTION 0: MEASUREMENT CONDITIONS ###
+governor: performance
+perf_event_paranoid: 1
+all runs pinned to CPU 0 (P-core) with taskset
+NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL  SETS PHY-LINE COHERENCY-SIZE
+L1d       48K     640K   12 Data            1    64        1             64
+L1i       32K     768K    8 Instruction     1    64        1             64
+L2       1.3M      14M   10 Unified         2  2048        1             64
+L3        30M      30M   12 Unified         3 40960        1             64
+compiler flags: -O2 -fno-tree-vectorize -mavx2 -mfma  (auto-vectorization DISABLED)
+
+### SECTION 1: SIMD WIDTH AVAILABILITY (PDF 1C.2) ###
+avx
+avx2
+avx_vnni
+512-bit: NOT AVAILABLE - AVX-512 fused off on Raptor Lake. 128/256 only.
+
+### SECTION 2: BUILD + VERIFICATION THAT WIDTHS DIFFER ###
+bin/sw_128  ymm-FMA(256bit): 0    xmm-FMA(128bit+tails): 13
+bin/sw_256  ymm-FMA(256bit): 1    xmm-FMA(128bit+tails): 12
+EXPECT: sw_128 has 0 ymm-FMA, sw_256 has 1. Otherwise the width switch did not take effect.
+
+### SECTION 3: CORRECTNESS, BOTH WIDTHS ###
+width=128 K=3  simd            yes           2.184        8.64      1.88x
+width=128 K=5  simd            yes           4.667       11.23      2.66x
+width=128 K=7  simd            yes           9.393       10.94      1.86x
+width=256 K=3  simd            yes           1.678       11.25      2.52x
+width=256 K=5  simd            yes           4.561       11.50      2.83x
+width=256 K=7  simd            yes           8.970       11.46      1.96x
+
+### SECTION 4: INSTRUCTION COUNT + SPEEDUP vs SIZE vs WIDTH (PDF 1C.1,1C.3,1C.4) ###
+instr = PER CALL. naive run = 11 naive calls. simd run = 11 naive + 10 simd, subtracted.
+instr_red = naive_instr / simd_instr  (instruction-count reduction factor)
+--- K=3 ---
+size   width   naive_ms  reord_ms   simd_ms  sp_naive  sp_reord   naive_instr    simd_instr instr_red
+1024   128         4.34      2.82      1.74      2.50      1.62    9.9613e+07    1.5077e+07      6.61
+1024   256         4.28      2.82      1.72      2.49      1.64    9.9613e+07    8.0085e+06     12.44
+2048   128        17.92     14.38      9.35      1.92      1.54    3.9745e+08    6.0282e+07      6.59
+2048   256        18.28     14.38      8.40      2.18      1.71    3.9745e+08    3.1886e+07     12.46
+4096   128        65.29     69.69     54.00      1.21      1.29    1.5904e+09    2.4079e+08      6.60
+4096   256        71.26     69.69     52.21      1.36      1.33    1.5904e+09    1.2767e+08     12.46
+8192   128       239.02    291.09    229.36      1.04      1.27    6.3631e+09    9.6246e+08      6.61
+8192   256       249.57    291.09    220.71      1.13      1.32    6.3631e+09    5.0968e+08     12.48
+--- K=5 ---
+size   width   naive_ms  reord_ms   simd_ms  sp_naive  sp_reord   naive_instr    simd_instr instr_red
+1024   128        10.75      7.97      4.87      2.21      1.64    2.1501e+08    4.0511e+07      5.31
+1024   256        12.77      7.97      4.70      2.72      1.70    2.1501e+08    2.0887e+07     10.29
+2048   128        51.50     38.44     25.38      2.03      1.51    8.5924e+08    1.6159e+08      5.32
+2048   256        51.55     38.44     23.56      2.19      1.63    8.5924e+08    8.2888e+07     10.37
+4096   128       189.62    189.48    144.39      1.31      1.31    3.4373e+09    6.4505e+08      5.33
+4096   256       189.99    189.48    137.34      1.38      1.38    3.4373e+09    3.3073e+08     10.39
+8192   128       796.58    787.52    615.92      1.29      1.28    1.3750e+10    2.5785e+09      5.33
+8192   256       777.80    787.52    589.43      1.32      1.34    1.3750e+10    1.3207e+09     10.41
+
+### SECTION 5: ALL STAGES vs MATRIX SIZE (for plots/task1_speedup_vs_size.png) ###
+width=256 (shipped default). Columns: stage correct time_ms GFLOPs speedup
+--- K=3 size=1024x1024 ---
+naive (ref)     yes           4.321        4.37      1.00x
+reorder         yes           2.965        6.37      1.46x
+unroll          yes           1.316       14.34      3.28x
+tile            yes           2.551        7.40      1.69x
+simd            yes           1.707       11.06      2.53x
+optimized       yes           4.557        4.14      0.95x
+--- K=3 size=2048x2048 ---
+naive (ref)     yes          17.821        4.24      1.00x
+reorder         yes          14.409        5.24      1.24x
+unroll          yes           5.346       14.12      3.33x
+tile            yes          10.467        7.21      1.70x
+simd            yes           8.551        8.83      2.08x
+optimized       yes          17.887        4.22      1.00x
+--- K=3 size=4096x4096 ---
+naive (ref)     yes          73.097        4.13      1.00x
+reorder         yes          72.669        4.16      1.01x
+unroll          yes          24.413       12.37      2.99x
+tile            yes          44.523        6.78      1.64x
+simd            yes          50.717        5.95      1.44x
+optimized       yes          73.183        4.13      1.00x
+--- K=3 size=8192x8192 ---
+naive (ref)     yes         290.453        4.16      1.00x
+reorder         yes         295.364        4.09      0.98x
+unroll          yes          99.086       12.19      2.93x
+tile            yes         180.429        6.69      1.61x
+simd            yes         222.188        5.44      1.31x
+optimized       yes         274.850        4.39      1.06x
+--- K=5 size=1024x1024 ---
+naive (ref)     yes          11.318        4.63      1.00x
+reorder         yes           8.467        6.19      1.34x
+unroll          yes           3.747       13.99      3.02x
+tile            yes           6.795        7.72      1.67x
+simd            yes           4.528       11.58      2.50x
+optimized       yes          12.825        4.09      0.88x
+--- K=5 size=2048x2048 ---
+naive (ref)     yes          44.669        4.69      1.00x
+reorder         yes          39.408        5.32      1.13x
+unroll          yes          13.733       15.27      3.25x
+tile            yes          28.308        7.41      1.58x
+simd            yes          23.177        9.05      1.93x
+optimized       yes          52.560        3.99      0.85x
+--- K=5 size=4096x4096 ---
+naive (ref)     yes         209.101        4.01      1.00x
+reorder         yes         193.579        4.33      1.08x
+unroll          yes          55.608       15.09      3.76x
+tile            yes         112.834        7.43      1.85x
+simd            yes         135.931        6.17      1.54x
+optimized       yes         210.038        3.99      1.00x
+--- K=5 size=8192x8192 ---
+naive (ref)     yes         841.469        3.99      1.00x
+reorder         yes         787.850        4.26      1.07x
+unroll          yes         248.976       13.48      3.38x
+tile            yes         455.835        7.36      1.85x
+simd            yes         591.235        5.68      1.42x
+optimized       yes         844.939        3.97      1.00x
+
+### SECTION 6: ALL STAGES vs KERNEL SIZE (for plots/task1_speedup_vs_kernel.png) ###
+size fixed at 2048x2048, width=256
+--- K=3 ---
+naive (ref)     yes          17.161        4.40      1.00x
+reorder         yes          14.265        5.29      1.20x
+unroll          yes           5.388       14.01      3.18x
+tile            yes          10.767        7.01      1.59x
+simd            yes           8.585        8.79      2.00x
+optimized       yes          18.608        4.06      0.92x
+--- K=5 ---
+naive (ref)     yes          45.781        4.58      1.00x
+reorder         yes          39.184        5.35      1.17x
+unroll          yes          14.114       14.86      3.24x
+tile            yes          28.409        7.38      1.61x
+simd            yes          23.447        8.94      1.95x
+optimized       yes          44.684        4.69      1.02x
+--- K=7 ---
+naive (ref)     yes          71.476        5.75      1.00x
+reorder         yes          77.133        5.33      0.93x
+unroll          yes          26.179       15.70      2.73x
+tile            yes          53.991        7.61      1.32x
+simd            yes          45.261        9.08      1.58x
+optimized       yes          71.377        5.76      1.00x
+--- K=9 ---
+naive (ref)     yes         124.095        5.48      1.00x
+reorder         yes         126.513        5.37      0.98x
+unroll          yes          42.168       16.11      2.94x
+tile            yes          87.869        7.73      1.41x
+simd            yes          74.658        9.10      1.66x
+optimized       yes         142.826        4.76      0.87x
+
+### SECTION 7: SIMD WIDTH COMPARISON (128 vs 256) ###
+--- width=128 size=1024 K=3 ---
+naive (ref)     yes           3.999        4.72      1.00x
+simd            yes           1.795       10.51      2.23x
+--- width=128 size=2048 K=3 ---
+naive (ref)     yes          16.266        4.64      1.00x
+simd            yes           9.179        8.23      1.77x
+--- width=128 size=4096 K=3 ---
+naive (ref)     yes          72.371        4.17      1.00x
+simd            yes          54.206        5.57      1.34x
+--- width=256 size=1024 K=3 ---
+naive (ref)     yes           4.493        4.20      1.00x
+simd            yes           1.736       10.87      2.59x
+--- width=256 size=2048 K=3 ---
+naive (ref)     yes          15.470        4.88      1.00x
+simd            yes           8.635        8.74      1.79x
+--- width=256 size=4096 K=3 ---
+naive (ref)     yes          73.135        4.13      1.00x
+simd            yes          51.231        5.89      1.43x
+
+=== END. NOTE: 512x512 excluded, sub-ms runtimes are noise-dominated. ===
+Sat 05 Sep 2026 04:48:39 PM IST
