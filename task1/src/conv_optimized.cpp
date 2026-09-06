@@ -73,7 +73,7 @@ void conv_optimized(const float* in, float* out, const float* ker,
                     float a=0.0f;
                     for(int ky=0;ky<K;++ky){
                         for(int kx=0;kx<K;++kx){
-                            a+=i[ky*in_stride+ox+ky]*ker[ky*K+kx];
+                            a+=i[ky*in_stride+ox+kx]*ker[ky*K+kx];
                         }
                     }
                     o[ox]=a;
