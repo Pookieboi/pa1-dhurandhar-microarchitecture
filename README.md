@@ -7,10 +7,6 @@
 | Divyaansh | 24B0981 |
 | Sufiyan | 24B0935 |
 
-Two tasks. Each one starts from a naive C++ kernel and makes it faster by paying attention to
-the cache hierarchy and the vector units of an x86 core. The full problem statement is in the
-[assignment document](https://docs.google.com/document/d/1suURtM3WaensRvABVxlHZmhbbXe-g2v-sNi8gUfuojg/edit?usp=sharing).
-
 ## Layout
 
 ```
